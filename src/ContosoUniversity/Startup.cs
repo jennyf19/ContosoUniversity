@@ -40,6 +40,8 @@ namespace ContosoUniversity
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
+            //service lifetime to Scoped by default...means the context object lifetime coincidesw with the web request life time
+            //Dispose method will be called automatically at the end of the web request
             services.AddDbContext<SchoolContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
