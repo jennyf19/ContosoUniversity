@@ -16,7 +16,7 @@ namespace ContosoUniversity.Controllers
 
         public StudentsController(SchoolContext context)
         {
-            _context = context;    
+            _context = context;
         }
 
         // GET: Students
@@ -34,7 +34,14 @@ namespace ContosoUniversity.Controllers
                 return NotFound();
             }
 
-            var student = await _context.Students.SingleOrDefaultAsync(m => m.ID == id);
+            var student =
+                await
+                //Include and ThenInclude methods cause the context to load the Student.Enrollmens nav property
+                //& within each enrollment the Enrollment.Course nav property
+                    _context.Students.Include(s => s.Enrollments)
+                        .ThenInclude(e => e.Course)
+                        .AsNoTracking()
+                        .SingleOrDefaultAsync(m => m.ID == id);
             if (student == null)
             {
                 return NotFound();
