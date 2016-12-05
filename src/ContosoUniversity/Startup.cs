@@ -41,9 +41,9 @@ namespace ContosoUniversity
         {
             // Add framework services.
             services.AddDbContext<SchoolContext>(
-                options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnetion")));
+                options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDbContext<ApplicationDbContext>(options =>
+           services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
