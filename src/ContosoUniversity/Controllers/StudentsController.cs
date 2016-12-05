@@ -112,7 +112,7 @@ namespace ContosoUniversity.Controllers
                     return RedirectToAction("Index");
                 }
             }
-            catch (DbUpdateException ex)
+            catch (DbUpdateException /* ex */)
             {
                 //Log the error 
                 ModelState.AddModelError("", "Unable to save changes. " + "Try again, and if the problem persists " + "" +
