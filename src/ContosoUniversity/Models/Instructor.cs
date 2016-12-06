@@ -31,7 +31,6 @@ namespace ContosoUniversity.Models
         {
             get { return LastName + ", " + FirstMidName; }
         }
-
         public ICollection<CourseAssignment> Courses { get; set; }
         public OfficeAssignment OfficeAssignment { get; set; }
     }
